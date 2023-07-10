@@ -1,0 +1,19 @@
+
+.mqqt-home {
+    background-color: #1E2F46;
+    color: white;
+}
+
+.mqqt-footer {
+    color: white;
+    background-color: #1E2F46;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    width: 25rem;
+    transition-duration: 0.7s;
+}

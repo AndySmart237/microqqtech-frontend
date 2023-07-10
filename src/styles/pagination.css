@@ -1,0 +1,35 @@
+
+
+.theme-sombre .paginationStyle li {
+    background-color: #1E2F46;
+    color: white;
+}
+
+.paginationStyle li {
+    border: none;    
+}
+
+#lien {
+    border-bottom: 3px solid darkblue;
+}
+.theme-sombre #lien {
+    border-bottom: 3px solid white;
+}
+
+.page-item-link {
+    text-decoration: none;
+    color: darkblue;    
+}
+.theme-sombre .page-item-link {
+    color: white;    
+}
+
+.page-link {
+    border: none;
+    margin: 0px 4px;
+    margin-top: 5px;
+    padding: 0.6rem 1rem;
+    background-color: #1E2F46;
+    color: white;
+    font-size: large;
+}

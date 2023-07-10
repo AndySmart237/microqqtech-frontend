@@ -2,12 +2,13 @@
 // Composant de la page Produits
 
 import { useEffect, useState } from 'react';
-import { getProductIndexPage, getProductDetailPages } from '../../API_Et_Utilitaires';
+import { getProductIndexPage, getProductDetailPages } from '../../UtilitairesEtAPI';
 import ProductCard from './ProductCard';
+import CardListPagination from '../../components/CardListPagination';
 import { FaCube } from "react-icons/fa6";
 
 
-function ProductPage() {
+const ProductPage = ({ pageSource }) => {
     const [productIndexPage, setProductIndexPage] = useState({});
     const [productDetailPages, setProductDetailPages] = useState([]);
 
@@ -31,21 +32,26 @@ function ProductPage() {
 
 
     return (
-        <>
-            <section className="container my-5">
-                <div className='header'>                    
-                    <h1 className="my-3 d-flex align-items-center">
-                        <FaCube /> <span className='px-3'>{productIndexPage.title}</span>
-                    </h1>
-                    <div className='fs-2' dangerouslySetInnerHTML={{ __html: productIndexPage.intro }}></div>
-                </div>
-                <div>
+        <section className="container my-5">
+            <div className='header'>
+                <h1 className="my-3 d-flex align-items-center">
+                    <FaCube /> <span className='px-3'>{productIndexPage.title}</span>
+                </h1>
+                <div className='fs-2' dangerouslySetInnerHTML={{ __html: productIndexPage.intro }}></div>
+            </div>
+            
+            {pageSource === 'home' ?
+                <>
+                    {productDetailPages.length > 0 && <CardListPagination data={productDetailPages} pageType='Produit' />} 
+                </>
+                :
+                <div className="row">
                     {productDetailPages.map((post) => (
                         <ProductCard post={post} />
                     ))}
                 </div>
-            </section>
-        </>
+            }
+        </section>
     );
 }
 

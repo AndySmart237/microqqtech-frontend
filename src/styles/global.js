@@ -8,14 +8,14 @@ export const globals = css`
       margin: 0px;
       padding: 0px;
       color: #000000;    
-      background-color: #cecece;
+      background-color: #efefef;
     }
-    .theme-sombre & {
+    .theme-sombre {
       color: #efefef;
-      background-color: #001330;
+      background-color: #0D1623;
     }
   
-    .theme-clair & {
+    .theme-clair {
       color: #000000;
       background-color: #efefef;
     }

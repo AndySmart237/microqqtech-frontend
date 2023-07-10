@@ -6,6 +6,7 @@ import './styles/global';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+document.body.classList.toggle('theme-clair');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -2,11 +2,11 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap';
-import { getHomePage, SERVER_URL } from '../API_Et_Utilitaires';
+import { getHomePage, SERVER_URL } from '../UtilitairesEtAPI';
 import { FaEnvelope, FaSun, FaMoon } from "react-icons/fa6";
 
 
-const NavBarStyle = { color: "white", backgroundColor: "#002340" };
+const NavbarStyle = { color: "white", backgroundColor: "#002340" };
 
 const NavBar = ({ onThemeChange, theme }) => {
     const [homePageLogo, setHomePageLogo] = useState([]);
@@ -25,8 +25,9 @@ const NavBar = ({ onThemeChange, theme }) => {
             })
     });
 
+
     return (
-        <Navbar variant="dark" expand="lg" className="px-5 py-4" style={NavBarStyle}>
+        <Navbar variant="dark" expand="lg" className="px-5 py-4" style={NavbarStyle}>
             <NavLink className="navbar-brand" to='/'>
                 <img alt={homePageLogo.title} height="65" width="65" src={SERVER_URL + homePageLogo.download_url} className="d-inline-block align-center"></img>
             </NavLink>

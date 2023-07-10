@@ -2,14 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { styled } from '@linaria/react';
-import { SERVER_URL } from '../../API_Et_Utilitaires';
+import { SERVER_URL } from '../../UtilitairesEtAPI';
 import { Link } from 'react-router-dom';
 import { FaRegCalendar, FaMoneyBillWave } from "react-icons/fa6";
 
-
-const Card = styled.div`
-    width: 24rem;
-`;
 
 
 function ProductCard({ post }) {
@@ -27,11 +23,11 @@ function ProductCard({ post }) {
 
 
     return (
-        <Card className="card shadow m-2 px-0">
+        <Card className="card border-0 shadow m-3 px-0" >
             <img className="card-img-top" alt={productIcon.title} src={productIcon.url} style={{ maxHeight: '20rem' }}></img>
             <div className="card-body">
                 <h5 className="card-title"> {post.title} </h5>
-                <p className="card-text"> {post.sub_title} </p>
+                <p className="card-text text-truncate"> {post.description} </p>
                 <p className="card-text ">
                     <span className="d-flex align-items-center"><FaRegCalendar /><span className='px-2'>{post.date_formatee}</span></span>
                     <span className="d-flex align-items-center"><FaMoneyBillWave /><span className='px-2'>{post.price}</span></span>
@@ -43,3 +39,15 @@ function ProductCard({ post }) {
 }
 
 export default ProductCard;
+
+
+const Card = styled.div`
+    .theme-clair & {
+        color: black;
+        background-color: white;
+    }
+    .theme-sombre & {
+        color: white;
+        background-color: #1E2F46;
+    }
+`;

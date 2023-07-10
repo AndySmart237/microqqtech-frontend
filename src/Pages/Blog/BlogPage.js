@@ -2,12 +2,13 @@
 // Composant de la page de Blog
 
 import { useEffect, useState } from 'react';
-import { getBlogIndexPage, getBlogDetailPages } from '../../API_Et_Utilitaires';
+import { getBlogIndexPage, getBlogDetailPages } from '../../UtilitairesEtAPI';
 import PostPageCard from './PostPageCard';
+import CardListPagination from '../../components/CardListPagination';
 import { FaBook } from "react-icons/fa6";
 
 
-function BlogPage() {
+const BlogPage = ({ pageSource }) => {
     const [blogIndexPage, setBlogIndexPage] = useState({});
     const [blogDetailPages, setBlogDetailPages] = useState([]);
 
@@ -15,7 +16,7 @@ function BlogPage() {
         getBlogIndexPage()
             .then((response) => {
                 var blogItems = response.data.items;
-                setBlogIndexPage(blogItems[0]);                
+                setBlogIndexPage(blogItems[0]);
             })
             .catch((err) => console.error(err));
     }, []);
@@ -31,22 +32,28 @@ function BlogPage() {
 
 
     return (
-        <>
-            <section className="container my-5">
-                <div className='header'>                    
-                    <h1 className="my-3 d-flex align-items-center">
-                        <FaBook /> <span className='px-3'>{blogIndexPage.title}</span>
-                    </h1>
-                    <div className='fs-2' dangerouslySetInnerHTML={{ __html: blogIndexPage.intro }}></div>
-                </div>
-                                
-                <div class="row p-2">
+        <section className="container my-5">
+            <div className='header'>
+                <h1 className="my-3 d-flex align-items-center">
+                    <FaBook /> <span className='px-3'>{blogIndexPage.title}</span>
+                </h1>
+                <div className='fs-2' dangerouslySetInnerHTML={{ __html: blogIndexPage.intro }}></div>
+            </div>
+
+            {pageSource === 'home' ?
+                <>
+                    {blogDetailPages.length > 0 && <CardListPagination data={blogDetailPages} pageType='Blog' />}
+                </>
+                :
+                <div className="row">
                     {blogDetailPages.map((post) => (
                         <PostPageCard post={post} />
                     ))}
                 </div>
-            </section>
-        </>
+            }
+
+
+        </section>
     );
 }
 

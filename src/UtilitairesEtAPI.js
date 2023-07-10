@@ -1,10 +1,16 @@
-import axios from "axios";
+// Ce fichier source regroupe toutes des fonctions utilisables par tous les composants React 
+// pour les pages du site; Il s'agit surtout des fonctions permettant la récupération des données
+// à travers des requettes API avec "axios"; d'autres fonctions utilitaires sont aussi définies ici
 
-const LOCAL_SERVER_URL = "http://localhost:8000";
+import axios from "axios";
+import { useEffect, useState } from 'react';
+
+//const LOCAL_SERVER_URL = "http://localhost:8000";
 const REMOTE_SERVER_URL = "http://microqqtech.pythonanywhere.com";
 export const SERVER_URL = REMOTE_SERVER_URL;
 
 const BACKEND_API_BASE_URL = SERVER_URL + "/api/v2/";
+const url_Images = BACKEND_API_BASE_URL + "images/";
 const url_HomePage = BACKEND_API_BASE_URL + "pages/?type=home.HomePage&fields=*";
 const url_blogIndexPage = BACKEND_API_BASE_URL + "pages/?type=blog.BlogIndexPage&fields=*";
 const url_blogDetailPage = BACKEND_API_BASE_URL + "pages/?type=blog.BlogDetailPage&fields=*&order=-post_date";
@@ -15,8 +21,12 @@ const url_productDetailPage = BACKEND_API_BASE_URL + "pages/?type=produits.Produ
 // const url_images_blog = BACKEND_API_BASE_URL + "blog-gallery/";
 
 
-export const getHomePage = () => {    
+export const getHomePage = () => {
     return axios.get(url_HomePage);
+}
+
+export const getImageByID = (id) => {
+    return axios.get(url_Images + id);
 }
 
 export const getBlogIndexPage = () => {
@@ -29,7 +39,7 @@ export const getBlogDetailPages = () => {
 }
 
 export const getBlogDetailPageBySlug = (slug) => {
-    return axios.get(url_blogDetailPage + "&slug=" +slug);
+    return axios.get(url_blogDetailPage + "&slug=" + slug);
 }
 
 export const getProductIndexPage = () => {
@@ -42,6 +52,19 @@ export const getProductDetailPages = () => {
 }
 
 export const getProductDetailPageBySlug = (slug) => {
-    return axios.get(url_productDetailPage + "&slug=" +slug);
+    return axios.get(url_productDetailPage + "&slug=" + slug);
 }
+
+
+export const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return windowWidth;
+};
 

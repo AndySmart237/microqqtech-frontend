@@ -2,13 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { styled } from '@linaria/react';
-import { SERVER_URL } from '../../API_Et_Utilitaires';
+import { SERVER_URL } from '../../UtilitairesEtAPI';
 import { Link } from 'react-router-dom';
 import { FaRegCalendar } from "react-icons/fa6";
-
-const Card = styled.div`
-    width: 24rem;
-`;
 
 
 function PostPageCard({ post }) {
@@ -26,9 +22,9 @@ function PostPageCard({ post }) {
 
 
     return (
-        <Card className="card shadow m-2 px-0">
+        <Card className="card shadow m-3 px-0">
             <img className="card-img-top" alt={blogDetailPageIcon.title} src={blogDetailPageIcon.url} style={{ maxHeight: '20rem', width: '100%' }}></img>
-            <div className="card-body">
+            <div className="card-body py-4 pb-5">
                 <h5 className="card-title"> {post.title} </h5>
                 <p className="card-text"> {post.sub_title} </p>
                 <p className="card-text">
@@ -41,3 +37,16 @@ function PostPageCard({ post }) {
 }
 
 export default PostPageCard;
+
+
+
+const Card = styled.div`    
+    .theme-clair & {
+        color: black;
+        background-color: white;
+    }
+    .theme-sombre & {
+        color: white;
+        background-color: #1E2F46;
+    }
+`;

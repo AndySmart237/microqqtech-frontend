@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { SERVER_URL, getBlogDetailPageBySlug } from '../../API_Et_Utilitaires';
+import { SERVER_URL, getBlogDetailPageBySlug } from '../../UtilitairesEtAPI';
+import ImageAPI from '../../components/ImageAPI';
 import { useParams, Link } from 'react-router-dom';
 import { FaRegCalendar } from "react-icons/fa6";
 import { YouTubeEmbed } from 'react-social-media-embed';
@@ -7,7 +8,7 @@ import { YouTubeEmbed } from 'react-social-media-embed';
 
 function BlogPostPage() {
   const [blogPost, setBlogPost] = useState({});
-  const { slug } = useParams();  
+  const { slug } = useParams();
 
   useEffect(() => {
     getBlogDetailPageBySlug(slug)
@@ -20,7 +21,7 @@ function BlogPostPage() {
           postPage_images.push({ ...img, ...img.meta });
         });
         postPage.gallery_images = postPage_images;
-        setBlogPost(postPage);              
+        setBlogPost(postPage);
       })
       .catch(error => {
         console.log(error);
@@ -30,7 +31,7 @@ function BlogPostPage() {
 
   return (
     <section className="container py-5">
-      <h1> {blogPost.sub_title} </h1>      
+      <h1> {blogPost.sub_title} </h1>
       <p className="card-text d-flex align-items-center">
         <FaRegCalendar /> <span className='px-2'>Posté le {blogPost.date_formatee}</span>
       </p>
@@ -43,7 +44,7 @@ function BlogPostPage() {
           </div>
           :
           <></>}
-      </div>      
+      </div>
 
       {blogPost.body ?
         <>
@@ -53,8 +54,14 @@ function BlogPostPage() {
                 return (
                   <div key={index} dangerouslySetInnerHTML={{ __html: block.value }}></div>
                 );
+              case 'image':
+                return (
+                  <div className='w-50'>
+                    <ImageAPI key={index} id={block.value} />
+                  </div>
+                );
               case 'lien_pour_contenu_externe':
-                return (                  
+                return (
                   <div style={{ display: 'flex', justifyContent: 'left' }}>
                     <YouTubeEmbed url={block.value} width={600} height={300} />
                   </div>
@@ -66,7 +73,7 @@ function BlogPostPage() {
         </>
         :
         <></>
-      }     
+      }
 
       <div className='py-5'>
         <Link to="/blog" className="btn btn-primary"> Retourner au Blog </Link>
