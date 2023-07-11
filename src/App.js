@@ -9,6 +9,7 @@ import Home from "./Pages/Home/HomePage";
 import Blog from "./Pages/Blog/BlogPage";
 import Produits from "./Pages/Produit/ProductPage";
 import Services from './Pages/Service/ServicePage';
+import AboutPage from './About/AboutPage';
 import BlogDetailPage from "./Pages/Blog/BlogDetailPage";
 import ProductDetailPage from "./Pages/Produit/ProductDetailPage";
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/produits" element={<Produits />} />
         <Route path="/produits/:slug" element={<ProductDetailPage />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
       <div className='pt-5 pb-0 mb-0'>
         <Footer theme={theme} />

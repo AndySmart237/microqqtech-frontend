@@ -42,6 +42,7 @@ const NavBar = ({ onThemeChange, theme }) => {
                         <NavLink className="nav-link px-4 fs-4" to='/produits'> Produits </NavLink>
                         <NavLink className="nav-link px-4 fs-4" to='/services'> Services </NavLink>
                         <NavLink className="nav-link px-4 fs-4" to='/blog'> Blog </NavLink>
+                        <NavLink className="nav-link px-4 fs-4" to='/about'> About </NavLink>
 
                         <NavLink className="nav-link px-4 pe-1 fs-3 d-flex align-items-center" to='/mail'> <FaEnvelope /> </NavLink>
                         <div className="nav-link d-none d-lg-block">
