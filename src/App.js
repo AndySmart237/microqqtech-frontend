@@ -5,11 +5,11 @@ import './styles/app.css'
 
 import NavBar from "./components/NavBar";
 import Footer from './components/Footer';
-import Home from "./Pages/Home/HomePage";
-import Blog from "./Pages/Blog/BlogPage";
-import Produits from "./Pages/Produit/ProductPage";
-import Services from './Pages/Service/ServicePage';
-import AboutPage from './About/AboutPage';
+import HomePage from "./Pages/Home/HomePage";
+import BlogPage from "./Pages/Blog/BlogPage";
+import ProductPage from "./Pages/Produit/ProductPage";
+import ServicePage from './Pages/Service/ServicePage';
+import AboutPage from './Pages/About/AboutPage';
 import BlogDetailPage from "./Pages/Blog/BlogDetailPage";
 import ProductDetailPage from "./Pages/Produit/ProductDetailPage";
 
@@ -30,12 +30,12 @@ function App() {
         <NavBar onThemeChange={handleThemeChange} theme={theme} />
       </header>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogDetailPage />} />
-        <Route path="/produits" element={<Produits />} />
+        <Route path="/produits" element={<ProductPage />} />
         <Route path="/produits/:slug" element={<ProductDetailPage />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/services" element={<ServicePage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
       <div className='pt-5 pb-0 mb-0'>

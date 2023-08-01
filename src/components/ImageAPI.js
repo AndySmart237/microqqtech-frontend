@@ -5,11 +5,11 @@ import { getImageByID, SERVER_URL } from '../UtilitairesEtAPI';
 
 
 
-function ImageAPI({ id }) {
+const ImageAPI = (props) => {
     const [image, setImage] = useState([]);
 
     useEffect(() => {
-        getImageByID(id)
+        getImageByID(props.id)
             .then(response => {
                 var img = response.data;
                 img = { ...img, ...img.meta };
@@ -23,7 +23,7 @@ function ImageAPI({ id }) {
 
 
     return (
-        <img alt={image.title} src={image.download_url} />
+        <img alt={image.title} src={image.download_url} {... props} />
     );
 }
 

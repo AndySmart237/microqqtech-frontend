@@ -1,11 +1,11 @@
-// MICROQQTECH
+// MICROQQTECH - ProductPage
 // Composant de la page Produits
 
 import { useEffect, useState } from 'react';
 import { getProductIndexPage, getProductDetailPages } from '../../UtilitairesEtAPI';
 import ProductCard from './ProductCard';
 import CardListPagination from '../../components/CardListPagination';
-import { FaCube } from "react-icons/fa6";
+import { FaCubes } from "react-icons/fa6";
 
 
 const ProductPage = ({ pageSource }) => {
@@ -33,9 +33,10 @@ const ProductPage = ({ pageSource }) => {
 
     return (
         <section className="container my-5">
-            <div className='header'>
-                <h1 className="my-3 d-flex align-items-center">
-                    <FaCube /> <span className='px-3'>{productIndexPage.title}</span>
+            <div className='header'>                
+                <h1 className="display-5 my-3 d-flex align-items-center">
+                    <span style={{opacity: '0.75'}}> <FaCubes /> </span> 
+                    <span className='px-3'> {productIndexPage.title} </span>
                 </h1>
                 <div className='fs-2' dangerouslySetInnerHTML={{ __html: productIndexPage.intro }}></div>
             </div>

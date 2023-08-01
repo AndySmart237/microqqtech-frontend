@@ -34,8 +34,9 @@ const BlogPage = ({ pageSource }) => {
     return (
         <section className="container my-5">
             <div className='header'>
-                <h1 className="my-3 d-flex align-items-center">
-                    <FaBook /> <span className='px-3'>{blogIndexPage.title}</span>
+                <h1 className="display-5 my-3 d-flex align-items-center">
+                    <span style={{opacity: '0.75'}}> <FaBook /> </span> 
+                    <span className='px-3'>{blogIndexPage.title}</span>
                 </h1>
                 <div className='fs-2' dangerouslySetInnerHTML={{ __html: blogIndexPage.intro }}></div>
             </div>

@@ -5,7 +5,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { FaRegCalendar, FaMoneyBillWave } from "react-icons/fa6";
 
 
-function ProductDetailPage() {
+const ProductDetailPage = () => {
   const [productPost, setProductPost] = useState({});
   const [productPostContent, setProductPostContent] = useState({});
 

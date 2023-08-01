@@ -4,7 +4,7 @@ import BlogPage from '../Blog/BlogPage';
 import ProductPage from '../Produit/ProductPage';
 
 
-function HomePage() {
+const HomePage = () => {
   const [homePage, setHomePage] = useState({});
   const [homePageContents, setHomePageContents] = useState([]);
   const [homePageLogo, setHomePageLogo] = useState([]);
@@ -52,10 +52,14 @@ function HomePage() {
           <div key={content.id} className="fs-2" dangerouslySetInnerHTML={{ __html: content }}></div>
         ))}
 
-        <br /><br />
-        <BlogPage pageSource='home' />
-        <br /><br />
-        <ProductPage pageSource='home' />
+        <div className='py-3 mqqt-glass'>
+          <BlogPage pageSource='home' />
+        </div>
+
+        <div className='py-3'>
+          <ProductPage pageSource='home' />
+        </div>
+        
       </div>
     </section>
   );

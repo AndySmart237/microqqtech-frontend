@@ -8,7 +8,7 @@ import { FaRegCalendar, FaMoneyBillWave } from "react-icons/fa6";
 
 
 
-function ProductCard({ post }) {
+const ProductCard = ({ post }) => {
     const [productIcon, setProductIcon] = useState([]);
 
     useEffect(() => {
@@ -39,7 +39,6 @@ function ProductCard({ post }) {
 }
 
 export default ProductCard;
-
 
 const Card = styled.div`
     .theme-clair & {

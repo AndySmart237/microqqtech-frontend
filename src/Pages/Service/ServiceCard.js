@@ -4,11 +4,12 @@ import { useEffect, useState } from 'react';
 import { styled } from '@linaria/react';
 import { SERVER_URL } from '../../UtilitairesEtAPI';
 import { Link } from 'react-router-dom';
-import { FaRegCalendar } from "react-icons/fa6";
+import { FaRegCalendar, FaMoneyBillWave } from "react-icons/fa6";
 
 
-const PostPageCard = ({ post }) => {
-    const [blogDetailPageIcon, setBlogDetailPageIcon] = useState([]);
+
+function ServiceCard({ post }) {
+    const [productIcon, setProductIcon] = useState([]);
 
     useEffect(() => {
         var logoObject = post.icone;
@@ -17,30 +18,30 @@ const PostPageCard = ({ post }) => {
             logoObject.url = logoObject.download_url;
         }
         logoObject.url = SERVER_URL + logoObject.url;
-        setBlogDetailPageIcon(logoObject);
+        setProductIcon(logoObject);
     });
 
 
     return (
-        <Card className="card shadow m-3 px-0">
-            <img className="card-img-top" alt={blogDetailPageIcon.title} src={blogDetailPageIcon.url} style={{ maxHeight: '20rem', width: '100%' }}></img>
-            <div className="card-body py-4 pb-5">
+        <Card className="card border-0 shadow m-3 px-0" >
+            <img className="card-img-top" alt={productIcon.title} src={productIcon.url} style={{ maxHeight: '20rem' }}></img>
+            <div className="card-body">
                 <h5 className="card-title"> {post.title} </h5>
-                <p className="card-text"> {post.sub_title} </p>
-                <p className="card-text">
+                <p className="card-text text-truncate"> {post.description} </p>
+                <p className="card-text ">
                     <span className="d-flex align-items-center"><FaRegCalendar /><span className='px-2'>{post.date_formatee}</span></span>
+                    <span className="d-flex align-items-center"><FaMoneyBillWave /><span className='px-2'>{post.price}</span></span>
                 </p>
-                <Link to={"/blog/" + post.meta.slug} className="stretched-link"></Link>
+                <Link to={"/produits/" + post.meta.slug} className="stretched-link"></Link>
             </div>
         </Card>
     );
 }
 
-export default PostPageCard;
+export default ServiceCard;
 
 
-
-const Card = styled.div`    
+const Card = styled.div`
     .theme-clair & {
         color: black;
         background-color: white;

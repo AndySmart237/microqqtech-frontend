@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { SERVER_URL, getBlogDetailPageBySlug } from '../../UtilitairesEtAPI';
-import ImageAPI from '../../components/ImageAPI';
+import PostContent from '../../components/PostContent';
 import { useParams, Link } from 'react-router-dom';
 import { FaRegCalendar } from "react-icons/fa6";
-import { YouTubeEmbed } from 'react-social-media-embed';
 
 
-function BlogPostPage() {
+const BlogPostPage = () => {
   const [blogPost, setBlogPost] = useState({});
   const { slug } = useParams();
 
@@ -47,30 +46,7 @@ function BlogPostPage() {
       </div>
 
       {blogPost.body ?
-        <>
-          {blogPost.body.map((block, index) => {
-            switch (block.type.toLowerCase()) {
-              case 'paragraphe':
-                return (
-                  <div key={index} dangerouslySetInnerHTML={{ __html: block.value }}></div>
-                );
-              case 'image':
-                return (
-                  <div className='w-50'>
-                    <ImageAPI key={index} id={block.value} />
-                  </div>
-                );
-              case 'lien_pour_contenu_externe':
-                return (
-                  <div style={{ display: 'flex', justifyContent: 'left' }}>
-                    <YouTubeEmbed url={block.value} width={600} height={300} />
-                  </div>
-                );
-              default:
-                return null;
-            }
-          })}
-        </>
+        <PostContent contenu={blogPost.body} />
         :
         <></>
       }
