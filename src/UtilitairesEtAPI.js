@@ -5,9 +5,9 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
 
-const LOCAL_SERVER_URL = "http://localhost:8000";
-//const REMOTE_SERVER_URL = "http://microqqtech.pythonanywhere.com";
-export const SERVER_URL = LOCAL_SERVER_URL;
+//const LOCAL_SERVER_URL = "http://localhost:8000";
+const REMOTE_SERVER_URL = "http://microqqtech.pythonanywhere.com";
+export const SERVER_URL = REMOTE_SERVER_URL;
 
 const BACKEND_API_BASE_URL = SERVER_URL + "/api/v2/";
 const url_Images = BACKEND_API_BASE_URL + "images/";
