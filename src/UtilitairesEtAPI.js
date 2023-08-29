@@ -5,20 +5,22 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
 
-//const LOCAL_SERVER_URL = "http://localhost:8000";
+const LOCAL_SERVER_URL = "http://localhost:8000";
 const REMOTE_SERVER_URL = "http://microqqtech.pythonanywhere.com";
 export const SERVER_URL = REMOTE_SERVER_URL;
 
 const BACKEND_API_BASE_URL = SERVER_URL + "/api/v2/";
 const url_Images = BACKEND_API_BASE_URL + "images/";
 const url_HomePage = BACKEND_API_BASE_URL + "pages/?type=home.HomePage&fields=*";
+const url_newsIndexPage = BACKEND_API_BASE_URL + "pages/?type=home.NewsIndexPage&fields=*";
+const url_newsPostPage = BACKEND_API_BASE_URL + "pages/?type=home.NewsPostPage&fields=*&order=-post_date";
 const url_AboutPage = BACKEND_API_BASE_URL + "pages/?type=about.AboutPage&fields=*";
 const url_blogIndexPage = BACKEND_API_BASE_URL + "pages/?type=blog.BlogIndexPage&fields=*";
 const url_blogDetailPage = BACKEND_API_BASE_URL + "pages/?type=blog.BlogDetailPage&fields=*&order=-post_date";
 const url_productIndexPage = BACKEND_API_BASE_URL + "pages/?type=produits.ProductIndexPage&fields=*";
 const url_productDetailPage = BACKEND_API_BASE_URL + "pages/?type=produits.ProductDetailPage&fields=*&order=-post_date";
 const url_serviceIndexPage = BACKEND_API_BASE_URL + "pages/?type=services.ServiceIndexPage&fields=*";
-const url_serviceDetailPage = BACKEND_API_BASE_URL + "pages/?type=services.ServiceDetailPage&fields=*&order=-post_date";
+//const url_serviceDetailPage = BACKEND_API_BASE_URL + "pages/?type=services.ServiceDetailPage&fields=*&order=-post_date";
 //const url_categorie_blog = BACKEND_API_BASE_URL + "blog-category/?fields=*";
 // const url_images = BACKEND_API_BASE_URL + "images/";
 // const url_images_blog = BACKEND_API_BASE_URL + "blog-gallery/";
@@ -26,6 +28,14 @@ const url_serviceDetailPage = BACKEND_API_BASE_URL + "pages/?type=services.Servi
 
 export const getHomePage = () => {
     return axios.get(url_HomePage);
+}
+
+export const getNewsIndexPage = () => {
+    return axios.get(url_newsIndexPage);
+}
+
+export const getNewsPostPages = () => {
+    return axios.get(url_newsPostPage);
 }
 
 export const getAboutPage = () => {

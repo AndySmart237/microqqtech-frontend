@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react';
 import { getHomePage, SERVER_URL } from '../../UtilitairesEtAPI';
+import NewsPostSlide from './NewsPostSlide';
 import BlogPage from '../Blog/BlogPage';
 import ProductPage from '../Produit/ProductPage';
 
 
 const HomePage = () => {
   const [homePage, setHomePage] = useState({});
-  const [homePageContents, setHomePageContents] = useState([]);
+  //const [homePageContents, setHomePageContents] = useState([]);
   const [homePageLogo, setHomePageLogo] = useState([]);
 
-  function getAllParagraphsOf(blockObject) {
-    var contenuObjet = [];
-    blockObject.body.forEach(contenu => {
-      if (contenu.type === 'paragraph') {
-        contenuObjet.push(contenu.value);
-      }
-    });
-    return contenuObjet;
-  }
+  // function getAllParagraphsOf(blockObject) {
+  //   var contenuObjet = [];
+  //   blockObject.body.forEach(contenu => {
+  //     if (contenu.type === 'paragraph') {
+  //       contenuObjet.push(contenu.value);
+  //     }
+  //   });
+  //   return contenuObjet;
+  // }
 
   useEffect(() => {
     getHomePage()
@@ -25,7 +26,7 @@ const HomePage = () => {
         var homePageItems = response.data.items;
         var page = homePageItems[0];
         setHomePage(page);
-        setHomePageContents(getAllParagraphsOf(page));
+        //setHomePageContents(getAllParagraphsOf(page));
         var logoObject = page.logo;
         logoObject = { ...logoObject, ...logoObject.meta };
         setHomePageLogo(logoObject);
@@ -46,20 +47,25 @@ const HomePage = () => {
           <span className='text-info fs-3'> {homePage.slogan} </span>
         </div>
       </div>
+
+      <NewsPostSlide />
+
       <div className='container py-4'>
-        <div className="fs-3 mb-4" dangerouslySetInnerHTML={{ __html: homePage.intro }}></div>
-        {homePageContents.map((content) => (
-          <div key={content.id} className="fs-2" dangerouslySetInnerHTML={{ __html: content }}></div>
-        ))}
+        {/* 
+          <div className="fs-3 mb-4" dangerouslySetInnerHTML={{ __html: homePage.intro }}></div>
+          {homePageContents.map((content) => (
+            <div key={content.id} className="fs-2" dangerouslySetInnerHTML={{ __html: content }}></div>
+          ))} 
+        */}
+
+        <div className='py-3'>
+          <ProductPage pageSource='home' />
+        </div>
 
         <div className='py-3 mqqt-glass'>
           <BlogPage pageSource='home' />
         </div>
 
-        <div className='py-3'>
-          <ProductPage pageSource='home' />
-        </div>
-        
       </div>
     </section>
   );

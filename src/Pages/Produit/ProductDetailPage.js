@@ -51,8 +51,7 @@ const ProductDetailPage = () => {
 
       <div className="container p-0 m-0">
         <div className="row">
-          <div className="col-md-5 py-2">
-            {/* <div style={{ maxWidth: '20rem' }}> */}
+          <div className="col-md-5 py-2">            
             {productPost.product_gallery_images ?
               <Carousel>
                 {productPost.product_gallery_images.map((image) => (
